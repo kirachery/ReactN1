@@ -10,7 +10,7 @@ import {
   ScrollView,
   Image,
   TouchableWithoutFeedback,
-  Dimentions,
+  Dimensions,
   AppRegistry,
   FlatList,
   TouchableOpacity 
@@ -53,7 +53,6 @@ class TestApi extends Component {
 
     return (
       <View style={styles.container}>
-      
         <FlatList 
          numColumns={2}
           data={this.state.data}
@@ -84,7 +83,7 @@ class Detail extends Component {
     return (
       <View style={styles.container}>
       <Image
-          style={styles.image}
+          style={styles.image_detail}
           source={{uri: detailsource}}
         />
       
@@ -103,23 +102,32 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF99FF',
 
   },
+  det_container: {
+
+
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    backgroundColor: '#FFF',
+
+  },
   welcome: {
     fontSize: 24,
     textAlign: 'center',
     margin: 10,
   },
   image: {
-    width:180,
+    width:(Dimensions.get('window').width/2)-20,
     height: 200,
     borderRadius: 10,
     margin: 10,
     flex:1,
     flexDirection: 'row',
-
-
   },
-  imagedetail: {
+  image_detail: {
     flex:1,
+    margin:3,
+    width:(Dimensions.get('window').width)-6,
+    //height: (Dimensions.get('window').height)-6,
   },
 
 
