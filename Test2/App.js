@@ -20,12 +20,14 @@ import {
   StackNavigator,
 } from 'react-navigation';
 
+import api from './app/api';
 
 class ApiImage extends Component {
   render(){
+  	const key = api.getkey();
 
     
-    {adr = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + this.props.id + '&key=AIzaSyD_WfkW6KL6UL4cByUSXrvCGOg5OXf8Oa4';}
+    {adr = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + this.props.id + '&key='+key;}
     return(
             <Image
           style={styles.image}
@@ -42,7 +44,9 @@ class TestApi extends Component {
       this.fetchData();
     }
     fetchData = async () => {
-      const res = await fetch('https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&key=AIzaSyD_WfkW6KL6UL4cByUSXrvCGOg5OXf8Oa4');
+      const key = api.getkey();
+      const place = api.getplace();
+      const res = await fetch('https://maps.googleapis.com/maps/api/place/details/json?placeid='+place+'&key='+key);
       const json = await res.json().then((resJson) => {return resJson.result.photos;});
 
       this.setState({data: json});
@@ -53,6 +57,7 @@ class TestApi extends Component {
 
     return (
       <View style={styles.container}>
+
         <FlatList 
          numColumns={2}
           data={this.state.data}
@@ -79,7 +84,8 @@ class Detail extends Component {
   render() {
     const { params } = this.props.navigation.state;
     const img = params ? params.img : null;
-    {detailsource = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1024&photoreference='+img+'&key=AIzaSyD_WfkW6KL6UL4cByUSXrvCGOg5OXf8Oa4';}
+    const key = api.getkey();
+    {detailsource = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1024&photoreference='+img+'&key='+key;}
     return (
       <View style={styles.det_container}>
       <Image
