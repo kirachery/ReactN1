@@ -23,8 +23,8 @@ import {
 
 class ApiImage extends Component {
   render(){
-    //const { params } = this.props.navigation.state;
-    {testid = 'CmRaAAAAiYo3OcKit9CRwhJWlb2XxqmHv4p8S6SOge3dkwipu0Ybeg6udPYXM33MiyFiti59nKPlcqZcQi1USkhd1S3uvAWORrRnrzZ-XRTb8ZC6zReSlbUOTCNPcVL9Ey1YoToDEhBvHrxSlGMnDNIT3wLkHx9TGhSSuHCtKXoLIhh4TzEo4E3qDoEhVg';}
+
+    
     {adr = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=' + this.props.id + '&key=AIzaSyD_WfkW6KL6UL4cByUSXrvCGOg5OXf8Oa4';}
     return(
             <Image
@@ -81,7 +81,7 @@ class Detail extends Component {
     const img = params ? params.img : null;
     {detailsource = 'https://maps.googleapis.com/maps/api/place/photo?maxwidth=1024&photoreference='+img+'&key=AIzaSyD_WfkW6KL6UL4cByUSXrvCGOg5OXf8Oa4';}
     return (
-      <View style={styles.container}>
+      <View style={styles.det_container}>
       <Image
           style={styles.image_detail}
           source={{uri: detailsource}}
@@ -103,11 +103,11 @@ const styles = StyleSheet.create({
 
   },
   det_container: {
-
-
+    flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
     flexWrap: 'wrap',
-    backgroundColor: '#FFF',
+    backgroundColor: '#000',
 
   },
   welcome: {
@@ -127,16 +127,13 @@ const styles = StyleSheet.create({
     flex:1,
     margin:3,
     width:(Dimensions.get('window').width)-6,
-    //height: (Dimensions.get('window').height)-6,
+    resizeMode: 'contain',
+
   },
 
 
 });
 
-/*const Navigation = StackNavigator({
-  home: {screen: Gallery},
-  detail: {screen: Detail}
-});*/
 
 
 const RootStack = StackNavigator(
